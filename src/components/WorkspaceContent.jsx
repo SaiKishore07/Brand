@@ -23,6 +23,7 @@ import BrandProfileContent from './BrandProfileContent';
 import BrandIdentityContent from './BrandIdentityContent';
 import BrandDescriptionContent from './BrandDescriptionContent';
 import BrandHistoryContent from './BrandHistoryContent';
+import BrandPresenceContent from './BrandPresenceContent';
 
 export default function WorkspaceContent({ activeItemId = 'overview', activeSectionTitle = '1. OVERVIEW & IDENTITY' }) {
   // 1. Overview Page
@@ -170,6 +171,11 @@ export default function WorkspaceContent({ activeItemId = 'overview', activeSect
   // 7. Brand History Page
   if (activeItemId === 'brand-history') {
     return <BrandHistoryContent />;
+  }
+
+  // 8. Brand Presence Page
+  if (activeItemId === 'brand-presence') {
+    return <BrandPresenceContent />;
   }
 
   // Generic fallback rendering for all other 24 items
