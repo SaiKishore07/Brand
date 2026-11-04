@@ -17,6 +17,11 @@ import {
   TrendingUp,
   AlertCircle
 } from 'lucide-react';
+import PersonalInfoContent from './PersonalInfoContent';
+import CommunicationContent from './CommunicationContent';
+import BrandProfileContent from './BrandProfileContent';
+import BrandIdentityContent from './BrandIdentityContent';
+import BrandDescriptionContent from './BrandDescriptionContent';
 
 export default function WorkspaceContent({ activeItemId = 'overview', activeSectionTitle = '1. OVERVIEW & IDENTITY' }) {
   // 1. Overview Page
@@ -136,7 +141,32 @@ export default function WorkspaceContent({ activeItemId = 'overview', activeSect
     );
   }
 
-  // Generic fallback rendering for all other 25 items
+  // 2. Personal Information Page
+  if (activeItemId === 'personal-info') {
+    return <PersonalInfoContent />;
+  }
+
+  // 3. Communication Page
+  if (activeItemId === 'communication') {
+    return <CommunicationContent />;
+  }
+
+  // 4. Brand Profile Page
+  if (activeItemId === 'brand-profile') {
+    return <BrandProfileContent />;
+  }
+
+  // 5. Brand Identity Page
+  if (activeItemId === 'brand-identity') {
+    return <BrandIdentityContent />;
+  }
+
+  // 6. Brand Description Page
+  if (activeItemId === 'brand-description') {
+    return <BrandDescriptionContent />;
+  }
+
+  // Generic fallback rendering for all other 24 items
   return (
     <div className="bg-white border border-slate-200 rounded-3xl p-8 max-w-4xl shadow-2xs">
       <div className="flex items-center justify-between border-b border-slate-100 pb-5 mb-6">
@@ -196,7 +226,7 @@ export default function WorkspaceContent({ activeItemId = 'overview', activeSect
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
               <div className="text-xs text-slate-400">Last Audited</div>
-              <div className="text-sm font-semibold text-slate-800 mt-0.5">Today at 14:30 IST</div>
+              <div className="text-sm font-semibold text-slate-800 mt-0.5">Today at 10:45 IST</div>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
               <div className="text-xs text-slate-400">Managing Representative</div>

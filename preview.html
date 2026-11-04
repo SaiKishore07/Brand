@@ -456,9 +456,9 @@
 
     <!-- RIGHT CONTENT AREA -->
     <main class="flex-1 overflow-y-auto p-6 sm:p-8 bg-slate-50 custom-scroll">
-      <div class="max-w-4xl mx-auto space-y-6">
+      <div class="max-w-5xl mx-auto space-y-6">
         
-        <!-- Breadcrumb & Title -->
+        <!-- Breadcrumb & Header Bar -->
         <div class="flex items-center justify-between border-b border-slate-200 pb-4">
           <div>
             <div id="contentSectionTag" class="text-xs font-bold text-sky-600 uppercase tracking-wider mb-1">
@@ -468,14 +468,14 @@
               Overview
             </h2>
           </div>
-          <span class="text-xs font-bold px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-lg">
+          <span id="headerBadge" class="text-xs font-bold px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-lg">
             Certified Organization
           </span>
         </div>
 
-        <!-- Dynamic Content Card -->
-        <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xs space-y-6">
-          <div class="bg-gradient-to-r from-sky-600 to-sky-500 text-white p-6 rounded-2xl">
+        <!-- 1. OVERVIEW VIEW -->
+        <div id="viewOverview" class="space-y-6">
+          <div class="bg-gradient-to-r from-sky-600 to-sky-500 text-white p-6 rounded-2xl shadow-xs">
             <h3 class="text-xl font-bold">Acme Industries Corporate Workspace</h3>
             <p class="text-sky-100 text-xs sm:text-sm mt-1">
               All 6 organization modules are synchronized with WEBUOS global registry.
@@ -483,27 +483,804 @@
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl">
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl shadow-2xs">
               <div class="text-xs text-slate-400 font-bold uppercase">Entity Status</div>
               <div class="text-xl font-bold text-slate-900 mt-1">Verified Tier 2</div>
-              <div class="text-xs text-emerald-600 mt-1">● Active Registration</div>
+              <div class="text-xs text-emerald-600 mt-1 font-medium">● Active Registration</div>
             </div>
-            <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl">
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl shadow-2xs">
               <div class="text-xs text-slate-400 font-bold uppercase">Legal Records</div>
               <div class="text-xl font-bold text-slate-900 mt-1">5 Documents</div>
-              <div class="text-xs text-sky-600 mt-1">● Audit Passed</div>
+              <div class="text-xs text-sky-600 mt-1 font-medium">● Audit Passed</div>
             </div>
-            <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl">
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl shadow-2xs">
               <div class="text-xs text-slate-400 font-bold uppercase">Network</div>
               <div class="text-xl font-bold text-slate-900 mt-1">14 Partners</div>
-              <div class="text-xs text-indigo-600 mt-1">● 6 Distributors</div>
+              <div class="text-xs text-indigo-600 mt-1 font-medium">● 6 Distributors</div>
             </div>
           </div>
 
           <div class="p-4 bg-sky-50 border border-sky-100 rounded-2xl text-xs sm:text-sm text-sky-900 flex items-start gap-3">
             <span>💡</span>
             <div>
-              <span class="font-bold">Module Synced:</span> You are viewing the live configuration for <strong id="activeItemNotice">Overview</strong>. All changes are protected by enterprise Single Sign-On and multi-party cryptographic authorization.
+              <span class="font-bold">Module Synced:</span> You are viewing the live configuration for Overview. All changes are protected by enterprise Single Sign-On.
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. PERSONAL INFORMATION VIEW -->
+        <div id="viewPersonalInfo" class="space-y-6 hidden">
+          <!-- Compliance Notice Banner -->
+          <div class="p-4 bg-sky-50/70 border border-sky-200 rounded-2xl flex items-start gap-3.5 text-slate-800">
+            <span class="text-sky-600 text-lg font-bold">ℹ️</span>
+            <div class="text-xs sm:text-sm">
+              <span class="font-bold text-sky-950">Official Representative Record:</span> These details represent the verified legal custodian of this brand account. Any changes to primary identification or registered contact channels will trigger an automated security re-verification.
+            </div>
+          </div>
+
+          <!-- Section 1: Representative Identity & Avatar -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xs space-y-6">
+            <h3 class="text-base font-bold text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
+              <span>👤 Brand Custodian &amp; Representative Profile</span>
+            </h3>
+
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 pb-4 border-b border-slate-100">
+              <div class="relative">
+                <div class="w-18 h-18 rounded-2xl bg-gradient-to-tr from-slate-900 to-slate-700 text-white flex items-center justify-center font-black text-2xl shadow-sm p-4">
+                  JD
+                </div>
+              </div>
+              <div>
+                <div class="text-lg font-bold text-slate-900">John Doe</div>
+                <div class="text-xs text-slate-500 font-medium">Chief Brand Officer &amp; Managing Representative</div>
+                <div class="flex items-center gap-2 mt-2">
+                  <span class="text-[11px] font-mono font-semibold bg-slate-100 text-slate-600 px-2 py-0.5 rounded-md">
+                    ACME-REP-0842
+                  </span>
+                  <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-md">
+                    Active Custodian
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Full Legal Name</label>
+                <input type="text" value="John Doe" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Official Designation / Title</label>
+                <input type="text" value="Chief Brand Officer &amp; Managing Representative" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Internal Department</label>
+                <input type="text" value="Brand Governance &amp; Legal Affairs" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Employee / Signatory ID</label>
+                <input type="text" value="ACME-REP-0842" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Preferred Timezone</label>
+                <input type="text" value="Asia/Kolkata (GMT+05:30)" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Verification Tier</label>
+                <div class="h-11 px-3.5 bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-between text-sm">
+                  <span class="font-semibold text-slate-800">Tier 1 Representative</span>
+                  <span class="text-emerald-600 font-bold">🛡️ Verified</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Contact Information -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xs space-y-6">
+            <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">
+              ✉️ Direct Official Contact Information
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <div class="flex justify-between items-center mb-1.5">
+                  <label class="text-xs font-bold text-slate-700 uppercase">Primary Corporate Email</label>
+                  <span class="text-[11px] font-bold text-emerald-600">✓ Verified</span>
+                </div>
+                <input type="email" value="john.doe@acme-industries.com" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-1.5">
+                  <label class="text-xs font-bold text-slate-700 uppercase">Direct Mobile / Phone</label>
+                  <span class="text-[11px] font-bold text-emerald-600">✓ OTP Verified</span>
+                </div>
+                <input type="tel" value="+91 98765 43210" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Compliance Alternate Email</label>
+                <input type="email" value="compliance@acme-industries.com" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Direct Office Desk Line</label>
+                <input type="tel" value="+91 40 2345 6789" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Brand Authority & Legal Governance -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xs space-y-6">
+            <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">
+              🛡️ Brand Authority &amp; Legal Governance
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Relationship to Brand</label>
+                <input type="text" value="Authorized Corporate Representative" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-semibold text-slate-900" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Signing Authority Level</label>
+                <input type="text" readonly value="Tier 1 - Full Legal &amp; Operational Authority" class="w-full h-11 px-3.5 bg-slate-100 border border-slate-200 rounded-xl text-sm text-slate-700" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">KYC Identification Type</label>
+                <input type="text" readonly value="Director Identification Number (DIN)" class="w-full h-11 px-3.5 bg-slate-100 border border-slate-200 rounded-xl text-sm text-slate-700" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Government ID Ref (Masked)</label>
+                <input type="text" readonly value="DIN-••••-8842" class="w-full h-11 px-3.5 bg-slate-100 border border-slate-200 rounded-xl text-sm font-mono text-slate-700" />
+              </div>
+              <div class="sm:col-span-2 p-4 bg-slate-50 border border-slate-200 rounded-2xl flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <div class="text-sm font-bold text-slate-900">Power of Attorney (POA) Record</div>
+                  <div class="text-xs text-slate-500">File: POA-ACME-2026-V3.pdf • Signed &amp; Notarized</div>
+                </div>
+                <button type="button" onclick="alert('Viewing POA document')" class="text-xs font-semibold text-sky-600 bg-white border border-slate-200 px-3 py-1.5 rounded-lg shadow-2xs">
+                  View Document
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Office Address -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xs space-y-6">
+            <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">
+              📍 Official Office Location of the Representative
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              <div class="sm:col-span-2 lg:col-span-3">
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Office Street Address</label>
+                <input type="text" value="Plot 42, Acme Heights, Cyber Park" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">City</label>
+                <input type="text" value="Hyderabad" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">State / Province</label>
+                <input type="text" value="Telangana" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Postal / PIN Code</label>
+                <input type="text" value="500081" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Country</label>
+                <input type="text" value="India" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Save Button -->
+          <div class="flex justify-end pt-2">
+            <button type="button" onclick="alert('Personal information updated successfully!')" class="px-6 py-3 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-semibold text-sm shadow-md transition">
+              Save Personal Information
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. COMMUNICATION VIEW -->
+        <div id="viewCommunication" class="space-y-6 hidden">
+          <!-- Overview Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl shadow-2xs">
+              <div class="flex items-center justify-between text-xs font-bold text-slate-400 uppercase">
+                <span>Email Authentication</span>
+                <span class="text-emerald-600 font-bold">100% Enforced</span>
+              </div>
+              <div class="text-base font-bold text-slate-900 mt-1">DKIM, SPF &amp; DMARC</div>
+              <div class="text-xs text-slate-500 mt-1">Anti-phishing brand protection active</div>
+            </div>
+
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl shadow-2xs">
+              <div class="flex items-center justify-between text-xs font-bold text-slate-400 uppercase">
+                <span>Primary Domain</span>
+                <span class="text-sky-600 font-bold">Active MX</span>
+              </div>
+              <div class="text-base font-bold text-slate-900 mt-1">acme-industries.com</div>
+              <div class="text-xs text-slate-500 mt-1">SSL/TLS 1.3 Certified &amp; Monitored</div>
+            </div>
+
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl shadow-2xs">
+              <div class="flex items-center justify-between text-xs font-bold text-slate-400 uppercase">
+                <span>SMS Sender ID</span>
+                <span class="text-emerald-600 font-bold">Approved</span>
+              </div>
+              <div class="text-base font-bold text-slate-900 mt-1 font-mono">ACMEIN</div>
+              <div class="text-xs text-slate-500 mt-1">Telecom Carrier Verified</div>
+            </div>
+          </div>
+
+          <!-- Official Inboxes -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xs space-y-6">
+            <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">
+              ✉️ Official Departmental Inboxes
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <div class="flex justify-between items-center mb-1.5">
+                  <label class="text-xs font-bold text-slate-700 uppercase">General Brand Contact</label>
+                  <span class="text-[11px] font-bold text-emerald-600">✓ Verified</span>
+                </div>
+                <input type="email" value="contact@acme-industries.com" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-1.5">
+                  <label class="text-xs font-bold text-slate-700 uppercase">IP &amp; Trademark Compliance</label>
+                  <span class="text-[11px] font-bold text-emerald-600">✓ Priority Inbound</span>
+                </div>
+                <input type="email" value="ip-compliance@acme-industries.com" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Press &amp; Media Relations</label>
+                <input type="email" value="media@acme-industries.com" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Customer Support / Helpdesk</label>
+                <input type="email" value="support@acme-industries.com" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Voice & Hotlines -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xs space-y-6">
+            <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">
+              📞 Official Telephony &amp; Telecom Sender IDs
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Toll-Free Customer Hotline</label>
+                <input type="text" value="+1 (800) 555-ACME" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Headquarters Switchboard</label>
+                <input type="text" value="+91 40 4567 8900" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Registered SMS Sender ID</label>
+                <input type="text" value="ACMEIN" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono font-bold" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Emergency Crisis Desk -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xs space-y-6">
+            <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">
+              🚨 24/7 Brand Protection &amp; Impersonation Crisis Desk
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Crisis Unit Team</label>
+                <input type="text" value="Acme Brand Protection Unit" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Immediate Priority Phone</label>
+                <input type="text" value="+91 98765 43299" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Priority Dispatch Email</label>
+                <input type="email" value="security-escalations@acme-industries.com" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Save Button -->
+          <div class="flex justify-end pt-2">
+            <button type="button" onclick="alert('Communication settings saved!')" class="px-6 py-3 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-semibold text-sm shadow-md transition">
+              Save Communication Settings
+            </button>
+          </div>
+        </div>
+
+        <!-- 4. BRAND PROFILE VIEW -->
+        <div id="viewBrandProfile" class="space-y-6 hidden">
+          <!-- Overview Stat Highlights -->
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl shadow-2xs">
+              <div class="text-xs font-bold text-slate-400 uppercase">Registry Status</div>
+              <div class="text-base font-bold text-slate-900 mt-1 flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                <span>Active Verified</span>
+              </div>
+              <div class="text-xs text-emerald-600 mt-1">ID: BR-9842</div>
+            </div>
+
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl shadow-2xs">
+              <div class="text-xs font-bold text-slate-400 uppercase">GS1 Global Prefix</div>
+              <div class="text-base font-bold text-slate-900 mt-1 font-mono">089012345</div>
+              <div class="text-xs text-sky-600 mt-1">Licensed for Barcoding / GTIN</div>
+            </div>
+
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl shadow-2xs">
+              <div class="text-xs font-bold text-slate-400 uppercase">Active Catalog</div>
+              <div class="text-base font-bold text-slate-900 mt-1">1,420 SKUs</div>
+              <div class="text-xs text-indigo-600 mt-1">Across 3 Trademark Classes</div>
+            </div>
+
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl shadow-2xs">
+              <div class="text-xs font-bold text-slate-400 uppercase">Brand Integrity</div>
+              <div class="text-base font-bold text-slate-900 mt-1">98.8%</div>
+              <div class="text-xs text-emerald-600 mt-1">Zero Trademark Disputes</div>
+            </div>
+          </div>
+
+          <!-- Master Brand Identity -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xs space-y-6">
+            <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">
+              🏢 Master Brand Entity &amp; Logo Asset
+            </h3>
+
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 pb-4 border-b border-slate-100">
+              <div class="w-18 h-18 rounded-2xl bg-gradient-to-tr from-sky-600 to-sky-400 text-white flex items-center justify-center font-black text-3xl shadow-sm p-4">
+                W
+              </div>
+              <div>
+                <div class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                  <span>Acme Industries</span>
+                  <span class="text-xs font-bold px-2 py-0.5 rounded-md bg-sky-50 text-sky-700 border border-sky-200">
+                    DBA: Acme
+                  </span>
+                </div>
+                <div class="text-xs text-slate-500 font-medium mt-0.5">Parent Entity: Acme Industries Holdings Ltd.</div>
+                <div class="flex items-center gap-2 mt-2">
+                  <span class="text-[11px] font-mono font-bold bg-slate-100 text-slate-700 px-2.5 py-0.5 rounded-md">
+                    WEBUOS ID: BR-9842
+                  </span>
+                  <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-md">
+                    Global Trademark Verified
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Official Brand Name</label>
+                <input type="text" value="Acme Industries" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Trade / DBA Display Name</label>
+                <input type="text" value="Acme" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Parent Corporate Entity</label>
+                <input type="text" value="Acme Industries Holdings Ltd." class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">GS1 Company Prefix</label>
+                <input type="text" value="089012345678" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Brand Type</label>
+                <input type="text" value="Corporate Master Brand" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Commercial Lifecycle</label>
+                <input type="text" value="Established Global Enterprise" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Brand Slogan & Scope -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xs space-y-6">
+            <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">
+              ✨ Commercial Scope &amp; Tagline
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div class="sm:col-span-2">
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Brand Slogan / Tagline</label>
+                <input type="text" value="Engineering Tomorrow's Industrial Standards" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Target Market Segment</label>
+                <input type="text" value="B2B Enterprise &amp; Industrial Supply Chains" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Year of First Commercial Use</label>
+                <input type="text" value="1998" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Digital Addressing -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xs space-y-6">
+            <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">
+              🌐 Digital Addressing &amp; Domain
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Primary Website</label>
+                <input type="url" value="https://www.acme-industries.com" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">WEBUOS Vanity Subdomain</label>
+                <input type="text" value="acme.webuos.com" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Official Brand Inquiries</label>
+                <input type="email" value="brand@acme-industries.com" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Save Button -->
+          <div class="flex justify-end pt-2">
+            <button type="button" onclick="alert('Brand Profile saved successfully!')" class="px-6 py-3 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-semibold text-sm shadow-md transition">
+              Save Brand Profile
+            </button>
+          </div>
+        </div>
+
+        <!-- 5. BRAND IDENTITY VIEW -->
+        <div id="viewBrandIdentity" class="space-y-6 hidden">
+          <!-- Overview Stats -->
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl shadow-2xs">
+              <div class="text-xs font-bold text-slate-400 uppercase">Logo Variations</div>
+              <div class="text-base font-bold text-slate-900 mt-1">4 Official Lockups</div>
+              <div class="text-xs text-sky-600 mt-1">Vector SVG, EPS, PNG</div>
+            </div>
+
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl shadow-2xs">
+              <div class="text-xs font-bold text-slate-400 uppercase">Pantone Matched</div>
+              <div class="text-base font-bold text-slate-900 mt-1">PMS 2935 C</div>
+              <div class="text-xs text-emerald-600 mt-1">Certified Color Accuracy</div>
+            </div>
+
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl shadow-2xs">
+              <div class="text-xs font-bold text-slate-400 uppercase">Primary Typography</div>
+              <div class="text-base font-bold text-slate-900 mt-1">Plus Jakarta Sans</div>
+              <div class="text-xs text-slate-500 mt-1">Geometric Sans-Serif</div>
+            </div>
+
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl shadow-2xs">
+              <div class="text-xs font-bold text-slate-400 uppercase">Guidelines Kit</div>
+              <div class="text-base font-bold text-slate-900 mt-1">Version 2.4</div>
+              <div class="text-xs text-indigo-600 mt-1">Synchronized across partners</div>
+            </div>
+          </div>
+
+          <!-- Logo Variations -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xs space-y-6">
+            <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">
+              🎨 Trademarked Logo Variations &amp; Lockups
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div class="border border-slate-200 rounded-2xl p-4 flex flex-col justify-between bg-slate-50/50">
+                <div class="text-xs font-bold text-slate-600 mb-2">Primary Lockup</div>
+                <div class="h-24 bg-white border border-slate-100 rounded-xl flex items-center justify-center p-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-sky-600 to-sky-400 flex items-center justify-center text-white font-black text-xs">W</div>
+                    <span class="font-extrabold text-sm text-slate-900">WEBUOS</span>
+                  </div>
+                </div>
+                <div class="mt-2 text-[11px] text-slate-400 flex justify-between">
+                  <span>Color • Light Bg</span>
+                  <span class="text-sky-600 font-bold">SVG</span>
+                </div>
+              </div>
+
+              <div class="border border-slate-200 rounded-2xl p-4 flex flex-col justify-between bg-slate-50/50">
+                <div class="text-xs font-bold text-slate-600 mb-2">Reversed Lockup</div>
+                <div class="h-24 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-center p-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-sky-500 to-sky-300 flex items-center justify-center text-white font-black text-xs">W</div>
+                    <span class="font-extrabold text-sm text-white">WEBUOS</span>
+                  </div>
+                </div>
+                <div class="mt-2 text-[11px] text-slate-400 flex justify-between">
+                  <span>White on Dark</span>
+                  <span class="text-sky-600 font-bold">SVG</span>
+                </div>
+              </div>
+
+              <div class="border border-slate-200 rounded-2xl p-4 flex flex-col justify-between bg-slate-50/50">
+                <div class="text-xs font-bold text-slate-600 mb-2">Brand Monogram</div>
+                <div class="h-24 bg-white border border-slate-100 rounded-xl flex items-center justify-center p-3">
+                  <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-600 to-sky-400 flex items-center justify-center text-white font-black text-lg">
+                    W
+                  </div>
+                </div>
+                <div class="mt-2 text-[11px] text-slate-400 flex justify-between">
+                  <span>App Icon / Favicon</span>
+                  <span class="text-sky-600 font-bold">SVG</span>
+                </div>
+              </div>
+
+              <div class="border border-slate-200 rounded-2xl p-4 flex flex-col justify-between bg-slate-50/50">
+                <div class="text-xs font-bold text-slate-600 mb-2">Monochrome</div>
+                <div class="h-24 bg-white border border-slate-100 rounded-xl flex items-center justify-center p-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-black flex items-center justify-center text-white font-black text-xs">W</div>
+                    <span class="font-extrabold text-sm text-black">WEBUOS</span>
+                  </div>
+                </div>
+                <div class="mt-2 text-[11px] text-slate-400 flex justify-between">
+                  <span>1-Color Print</span>
+                  <span class="text-sky-600 font-bold">SVG</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Color Palette System -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xs space-y-6">
+            <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">
+              🎨 Standardized Brand Color Palette
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              <div class="border border-slate-200 rounded-2xl overflow-hidden bg-white">
+                <div class="h-20 bg-[#0076E6]"></div>
+                <div class="p-3">
+                  <div class="font-bold text-slate-900 text-xs">Royal Blue</div>
+                  <div class="font-mono text-xs text-sky-600 font-bold">#0076E6</div>
+                  <div class="text-[10px] text-slate-400">Pantone 2935 C</div>
+                </div>
+              </div>
+
+              <div class="border border-slate-200 rounded-2xl overflow-hidden bg-white">
+                <div class="h-20 bg-[#0284C7]"></div>
+                <div class="p-3">
+                  <div class="font-bold text-slate-900 text-xs">Cyan Accent</div>
+                  <div class="font-mono text-xs text-sky-600 font-bold">#0284C7</div>
+                  <div class="text-[10px] text-slate-400">Pantone 306 C</div>
+                </div>
+              </div>
+
+              <div class="border border-slate-200 rounded-2xl overflow-hidden bg-white">
+                <div class="h-20 bg-[#0F172A]"></div>
+                <div class="p-3">
+                  <div class="font-bold text-slate-900 text-xs">Deep Slate</div>
+                  <div class="font-mono text-xs text-sky-600 font-bold">#0F172A</div>
+                  <div class="text-[10px] text-slate-400">Pantone 433 C</div>
+                </div>
+              </div>
+
+              <div class="border border-slate-200 rounded-2xl overflow-hidden bg-white">
+                <div class="h-20 bg-[#F8FAFC] border-b border-slate-100"></div>
+                <div class="p-3">
+                  <div class="font-bold text-slate-900 text-xs">Surface Gray</div>
+                  <div class="font-mono text-xs text-sky-600 font-bold">#F8FAFC</div>
+                  <div class="text-[10px] text-slate-400">Cool Gray 1 C</div>
+                </div>
+              </div>
+
+              <div class="border border-slate-200 rounded-2xl overflow-hidden bg-white">
+                <div class="h-20 bg-[#10B981]"></div>
+                <div class="p-3">
+                  <div class="font-bold text-slate-900 text-xs">Verification</div>
+                  <div class="font-mono text-xs text-sky-600 font-bold">#10B981</div>
+                  <div class="text-[10px] text-slate-400">Pantone 7481 C</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Typography Hierarchy -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xs space-y-6">
+            <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">
+              🔤 Brand Typography Hierarchy
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl">
+                <div class="text-xs font-bold text-slate-400 uppercase">Headings</div>
+                <div class="text-xl font-extrabold text-slate-900 mt-1">Plus Jakarta Sans</div>
+                <div class="text-xs text-slate-500 mt-1 font-bold">SemiBold (600) &amp; Bold (700)</div>
+              </div>
+              <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl">
+                <div class="text-xs font-bold text-slate-400 uppercase">Body &amp; UI</div>
+                <div class="text-lg font-bold text-slate-900 mt-1">Plus Jakarta Sans</div>
+                <div class="text-xs text-slate-500 mt-1">Regular (400) &amp; Medium (500)</div>
+              </div>
+              <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl font-mono">
+                <div class="text-xs font-bold text-slate-400 uppercase font-sans">Code &amp; Barcodes</div>
+                <div class="text-base font-bold text-slate-900 mt-1">JetBrains Mono</div>
+                <div class="text-xs text-slate-500 mt-1">GTIN Barcodes &amp; SKU Codes</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Save Button -->
+          <div class="flex justify-end pt-2">
+            <button type="button" onclick="alert('Brand Identity saved successfully!')" class="px-6 py-3 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-semibold text-sm shadow-md transition">
+              Save Brand Identity Settings
+            </button>
+          </div>
+        </div>
+
+        <!-- 6. BRAND DESCRIPTION VIEW -->
+        <div id="viewBrandDescription" class="space-y-6 hidden">
+          <!-- Stats Summary -->
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl shadow-2xs">
+              <div class="text-xs font-bold text-slate-400 uppercase">Short Pitch</div>
+              <div class="text-base font-bold text-slate-900 mt-1">42 Words</div>
+              <div class="text-xs text-sky-600 mt-1">Optimized for Meta &amp; Catalogs</div>
+            </div>
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl shadow-2xs">
+              <div class="text-xs font-bold text-slate-400 uppercase">Brand Narrative</div>
+              <div class="text-base font-bold text-slate-900 mt-1">168 Words</div>
+              <div class="text-xs text-emerald-600 mt-1">Corporate Profile Ready</div>
+            </div>
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl shadow-2xs">
+              <div class="text-xs font-bold text-slate-400 uppercase">Press Boilerplate</div>
+              <div class="text-base font-bold text-slate-900 mt-1">64 Words</div>
+              <div class="text-xs text-indigo-600 mt-1">Approved for Media Releases</div>
+            </div>
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl shadow-2xs">
+              <div class="text-xs font-bold text-slate-400 uppercase">Core Values</div>
+              <div class="text-base font-bold text-slate-900 mt-1">4 Pillars</div>
+              <div class="text-xs text-emerald-600 mt-1">Enterprise Standard</div>
+            </div>
+          </div>
+
+          <!-- Section 1: Short Pitch -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xs space-y-4">
+            <div class="border-b border-slate-100 pb-3 flex items-center justify-between">
+              <div>
+                <h3 class="text-base font-bold text-slate-900">✨ Short Brand Description / Elevator Pitch</h3>
+                <p class="text-xs text-slate-500 mt-0.5">Used for marketplace partner profiles, search engine snippets, and retail catalog headers (under 100 words).</p>
+              </div>
+              <span class="text-xs font-mono text-slate-400 font-medium">272 characters</span>
+            </div>
+            <textarea rows="3" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm text-slate-900 leading-relaxed focus:bg-white focus:border-sky-500 focus:ring-2 focus:ring-sky-100 transition resize-none">Acme Industries is a global pioneer in advanced industrial automation, precision engineering components, and smart telemetry solutions. Engineered for mission-critical supply chains, Acme powers industrial manufacturing across 28 countries with verifiable quality and ISO 9001 certification.</textarea>
+          </div>
+
+          <!-- Section 2: Full Brand Narrative -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xs space-y-4">
+            <div class="border-b border-slate-100 pb-3 flex items-center justify-between">
+              <div>
+                <h3 class="text-base font-bold text-slate-900">📖 Comprehensive Long Brand Narrative</h3>
+                <p class="text-xs text-slate-500 mt-0.5">The complete brand backstory, technological heritage, manufacturing footprint, and market problem solved.</p>
+              </div>
+              <span class="text-xs font-mono text-slate-400 font-medium">168 words</span>
+            </div>
+            <textarea rows="7" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl text-sm text-slate-900 leading-relaxed focus:bg-white focus:border-sky-500 focus:ring-2 focus:ring-sky-100 transition">Founded on the principles of mechanical excellence and uncompromising industrial reliability, Acme Industries has evolved into a global benchmark for precision engineering and next-generation smart manufacturing.
+
+Our comprehensive portfolio spans high-performance robotics components, industrial sensor suites, and automated telemetry hardware designed to withstand the world's most demanding operational environments. Headquartered in Hyderabad with advanced manufacturing centers in Germany and Singapore, Acme bridges foundational engineering rigor with real-time digital intelligence.
+
+Every Acme component is manufactured to micro-tolerance specifications, cryptographically cataloged, and backed by a comprehensive global distribution network. We partner with tier-1 automotive manufacturers, aerospace developers, and renewable energy grids to ensure continuous uptime and resilient supply chain performance.</textarea>
+          </div>
+
+          <!-- Section 3: Mission, Vision, Purpose -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xs space-y-6">
+            <div class="border-b border-slate-100 pb-3">
+              <h3 class="text-base font-bold text-slate-900">🧭 Mission, Vision &amp; Purpose Framework</h3>
+              <p class="text-xs text-slate-500 mt-0.5">Foundational corporate philosophy guiding partner onboarding and corporate governance.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+              <div class="p-5 bg-slate-50/80 border border-slate-200 rounded-2xl flex flex-col justify-between space-y-3">
+                <div>
+                  <div class="text-xs font-bold text-sky-700 uppercase tracking-wider mb-2">🎯 Mission Statement</div>
+                  <textarea rows="4" class="w-full bg-white border border-slate-200 rounded-xl p-3 text-xs sm:text-sm text-slate-800 leading-relaxed focus:border-sky-500 transition resize-none font-medium">To accelerate global industrial efficiency through uncompromising engineering precision, zero-defect manufacturing, and sustainable automation.</textarea>
+                </div>
+                <div class="text-[11px] text-slate-400">What we do every day for our customers.</div>
+              </div>
+              <div class="p-5 bg-slate-50/80 border border-slate-200 rounded-2xl flex flex-col justify-between space-y-3">
+                <div>
+                  <div class="text-xs font-bold text-indigo-700 uppercase tracking-wider mb-2">✨ Vision Statement</div>
+                  <textarea rows="4" class="w-full bg-white border border-slate-200 rounded-xl p-3 text-xs sm:text-sm text-slate-800 leading-relaxed focus:border-sky-500 transition resize-none font-medium">To be the foundational benchmark for smart industrial infrastructure and resilient global supply chains by 2030.</textarea>
+                </div>
+                <div class="text-[11px] text-slate-400">Where we will lead the industry by 2030.</div>
+              </div>
+              <div class="p-5 bg-slate-50/80 border border-slate-200 rounded-2xl flex flex-col justify-between space-y-3">
+                <div>
+                  <div class="text-xs font-bold text-emerald-700 uppercase tracking-wider mb-2">❤️ Core Purpose</div>
+                  <textarea rows="4" class="w-full bg-white border border-slate-200 rounded-xl p-3 text-xs sm:text-sm text-slate-800 leading-relaxed focus:border-sky-500 transition resize-none font-medium">Empowering engineers and industrial manufacturers with precision-grade components they can depend on without fail.</textarea>
+                </div>
+                <div class="text-[11px] text-slate-400">Why Acme exists in the global ecosystem.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Core Brand Values -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xs space-y-6">
+            <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">
+              🏛️ Core Values &amp; Operational Pillars
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-1.5">
+                <div class="text-xs font-bold text-slate-400 uppercase">Pillar 01</div>
+                <div class="text-base font-bold text-slate-900">Uncompromising Precision</div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Zero-tolerance engineering standards with 100% digital optical audit on every production batch.
+                </p>
+              </div>
+              <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-1.5">
+                <div class="text-xs font-bold text-slate-400 uppercase">Pillar 02</div>
+                <div class="text-base font-bold text-slate-900">Sustainable Manufacturing</div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Circular metallurgical recycling and 40% renewable energy reliance in all global fabrication hubs.
+                </p>
+              </div>
+              <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-1.5">
+                <div class="text-xs font-bold text-slate-400 uppercase">Pillar 03</div>
+                <div class="text-base font-bold text-slate-900">Verified Integrity</div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Full transparency across supply chains with cryptographically signed certificates of conformance.
+                </p>
+              </div>
+              <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-1.5">
+                <div class="text-xs font-bold text-slate-400 uppercase">Pillar 04</div>
+                <div class="text-base font-bold text-slate-900">Mission-Critical Uptime</div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Engineered for continuous 24/7/365 harsh-environment duty cycles without degradation.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 5: Press Boilerplate -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xs space-y-4">
+            <div class="border-b border-slate-100 pb-3 flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h3 class="text-base font-bold text-slate-900">💬 Standard Press Release Boilerplate (About Acme)</h3>
+                <p class="text-xs text-slate-500 mt-0.5">Mandatory copy required at the footer of official corporate releases and financial disclosures.</p>
+              </div>
+              <button type="button" onclick="navigator.clipboard.writeText(document.getElementById('txtBoilerplate').value); alert('Boilerplate copied to clipboard!');" class="px-3.5 py-1.5 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 shadow-2xs transition">
+                <span>📋 Copy Boilerplate</span>
+              </button>
+            </div>
+            <textarea id="txtBoilerplate" rows="3" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-xs sm:text-sm text-slate-800 leading-relaxed font-mono resize-none">About Acme Industries: Acme Industries is a multinational leader in industrial automation, telemetry systems, and precision mechanical engineering. With active operations across 28 countries, Acme provides certified components and IoT-enabled infrastructure to aerospace, automotive, and renewable energy enterprises worldwide. For more information, visit https://www.acme-industries.com.</textarea>
+          </div>
+
+          <!-- Section 6: USPs -->
+          <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xs space-y-5">
+            <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">
+              ⚡ Key Differentiators &amp; Value Propositions (USPs)
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl flex items-center gap-3">
+                <span class="text-emerald-600 font-bold">✔</span>
+                <input type="text" value="ISO 9001:2015, CE &amp; AS9100D Certified Manufacturing Facilities" class="w-full bg-transparent border-none text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none" />
+              </div>
+              <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl flex items-center gap-3">
+                <span class="text-emerald-600 font-bold">✔</span>
+                <input type="text" value="Proprietary IoT Telemetry embedded directly into mechanical componentry" class="w-full bg-transparent border-none text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none" />
+              </div>
+              <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl flex items-center gap-3">
+                <span class="text-emerald-600 font-bold">✔</span>
+                <input type="text" value="Global 48-Hour critical spare dispatch guarantee across all operating territories" class="w-full bg-transparent border-none text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none" />
+              </div>
+              <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl flex items-center gap-3">
+                <span class="text-emerald-600 font-bold">✔</span>
+                <input type="text" value="100% cryptographically audited and counterfeit-resistant batch tracking" class="w-full bg-transparent border-none text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Save Button -->
+          <div class="flex justify-end pt-2">
+            <button type="button" onclick="alert('Brand Description saved successfully!')" class="px-6 py-3 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-semibold text-sm shadow-md transition">
+              Save Brand Description
+            </button>
+          </div>
+        </div>
+
+        <!-- 7. GENERIC FALLBACK VIEW FOR OTHER ITEMS -->
+        <div id="viewGenericFallback" class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xs space-y-6 hidden">
+          <div class="p-4 bg-sky-50 border border-sky-100 rounded-2xl text-xs sm:text-sm text-sky-900 flex items-start gap-3">
+            <span>💡</span>
+            <div>
+              <span class="font-bold">Module Synced:</span> You are viewing configuration for <strong id="activeItemNotice">Overview</strong>. All changes are protected by enterprise Single Sign-On and multi-party cryptographic authorization.
             </div>
           </div>
         </div>
@@ -578,7 +1355,37 @@
 
       document.getElementById('contentHeading').innerText = label;
       document.getElementById('contentSectionTag').innerText = section;
-      document.getElementById('activeItemNotice').innerText = label;
+      const notice = document.getElementById('activeItemNotice');
+      if (notice) notice.innerText = label;
+
+      const vOverview = document.getElementById('viewOverview');
+      const vPersonal = document.getElementById('viewPersonalInfo');
+      const vComm = document.getElementById('viewCommunication');
+      const vBrand = document.getElementById('viewBrandProfile');
+      const vIdentity = document.getElementById('viewBrandIdentity');
+      const vDesc = document.getElementById('viewBrandDescription');
+      const vGeneric = document.getElementById('viewGenericFallback');
+
+      // Hide all subviews first
+      [vOverview, vPersonal, vComm, vBrand, vIdentity, vDesc, vGeneric].forEach(v => {
+        if (v) v.classList.add('hidden');
+      });
+
+      if (label === 'Overview') {
+        if (vOverview) vOverview.classList.remove('hidden');
+      } else if (label === 'Personal Information') {
+        if (vPersonal) vPersonal.classList.remove('hidden');
+      } else if (label === 'Communication') {
+        if (vComm) vComm.classList.remove('hidden');
+      } else if (label === 'Brand Profile') {
+        if (vBrand) vBrand.classList.remove('hidden');
+      } else if (label === 'Brand Identity') {
+        if (vIdentity) vIdentity.classList.remove('hidden');
+      } else if (label === 'Brand Description') {
+        if (vDesc) vDesc.classList.remove('hidden');
+      } else {
+        if (vGeneric) vGeneric.classList.remove('hidden');
+      }
     }
 
     function applyActiveStyle(btn) {
