@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WEBUOS | Organization & Brand Portal with Full Sidebar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .custom-scroll::-webkit-scrollbar {
+      width: 5px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #e2e8f0;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-900 antialiased min-h-screen flex flex-col font-sans">
+
+  <!-- Global Header Bar -->
+  <header class="bg-white border-b border-slate-200 px-6 py-3 flex items-center justify-between sticky top-0 z-40 shadow-xs">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-sky-600 to-sky-400 flex items-center justify-center text-white font-extrabold text-base shadow-xs">
+        W
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="font-bold text-slate-900 text-base">WEBUOS</span>
+          <span class="text-[11px] font-bold uppercase tracking-wider bg-sky-50 text-sky-600 border border-sky-200 px-2 py-0.5 rounded-md">Brand Suite</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Switcher -->
+    <div class="flex items-center bg-slate-100 p-1 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 gap-1">
+      <button id="btnTabReg" onclick="setAppMode('register')" class="px-3.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">
+        Registration
+      </button>
+      <button id="btnTabLogin" onclick="setAppMode('login')" class="px-3.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">
+        Brand Login
+      </button>
+      <button id="btnTabWorkspace" onclick="setAppMode('workspace')" class="px-3.5 py-1.5 rounded-lg bg-sky-600 text-white shadow-xs transition flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Brand Workspace (Sidebar)</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- VIEW 1: AUTHENTICATION FLOW (REGISTER & LOGIN)            -->
+  <!-- ======================================================== -->
+  <main id="viewAuth" class="flex-1 flex items-center justify-center p-4 sm:p-10 hidden">
+    <div class="max-w-2xl w-full mx-auto">
+      
+      <!-- REGISTER CARD -->
+      <div id="cardRegister" class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm hidden">
+        <div class="mb-4">
+          <span class="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-sky-50 text-sky-600 border border-sky-200">
+            ORGANIZATION / BUSINESS REGISTRATION
+          </span>
+        </div>
+        <h1 class="text-2xl sm:text-[26px] font-bold text-slate-900 tracking-tight">Account details</h1>
+        <p class="text-sm text-slate-500 mt-1 mb-6">Fill in your information to create your WEBUOS account.</p>
+
+        <form onsubmit="handleAuthRegister(event)" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-semibold text-slate-800 mb-1.5">Full Name</label>
+              <input type="text" placeholder="John Doe" required class="w-full h-12 px-4 bg-white border border-slate-200 rounded-xl text-sm" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-800 mb-1.5">Company / Organization</label>
+              <input type="text" placeholder="Acme Industries" required class="w-full h-12 px-4 bg-white border border-slate-200 rounded-xl text-sm" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-800 mb-1.5">Email</label>
+              <input type="email" placeholder="you@company.com" required class="w-full h-12 px-4 bg-white border border-slate-200 rounded-xl text-sm" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-800 mb-1.5">Phone No</label>
+              <input type="tel" placeholder="+91 98765 43210" required class="w-full h-12 px-4 bg-white border border-slate-200 rounded-xl text-sm" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-800 mb-1.5">Password</label>
+              <input type="password" placeholder="••••••••" required class="w-full h-12 px-4 bg-white border border-slate-200 rounded-xl text-sm" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-800 mb-1.5">Confirm Password</label>
+              <input type="password" placeholder="••••••••" required class="w-full h-12 px-4 bg-white border border-slate-200 rounded-xl text-sm" />
+            </div>
+          </div>
+
+          <div class="bg-sky-50 border border-sky-200 rounded-xl px-4 py-3 flex items-center gap-3">
+            <span class="text-blue-600 font-bold">ℹ</span>
+            <span class="text-xs sm:text-sm text-slate-700">After registration you'll verify your email and phone with a one-time code.</span>
+          </div>
+
+          <div class="flex items-start gap-2.5 pt-1">
+            <input type="checkbox" required class="w-4 h-4 mt-0.5 rounded border-slate-300 text-sky-600" />
+            <label class="text-xs sm:text-sm text-slate-600 leading-snug">
+              I agree to the <a href="#" class="text-sky-600 font-semibold hover:underline">Terms &amp; Conditions</a> and <a href="#" class="text-sky-600 font-semibold hover:underline">Privacy Policy</a> of WEBUOS.
+            </label>
+          </div>
+
+          <button type="submit" class="w-full h-12 bg-sky-600 hover:bg-sky-700 text-white rounded-full font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-md">
+            <span>Create Business Account &rarr;</span>
+          </button>
+        </form>
+
+        <div class="text-center mt-5 text-sm text-slate-500">
+          Already have an account? <button onclick="setAuthSubView('login')" class="text-sky-600 font-semibold hover:underline">Sign in &rarr;</button>
+        </div>
+      </div>
+
+      <!-- LOGIN CARD -->
+      <div id="cardLogin" class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm max-w-xl mx-auto">
+        <div class="mb-4">
+          <span class="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-sky-50 text-sky-600 border border-sky-200">
+            ORGANIZATION / BRAND LOGIN
+          </span>
+        </div>
+        <h1 class="text-2xl sm:text-[26px] font-bold text-slate-900 tracking-tight">Brand account login</h1>
+        <p class="text-sm text-slate-500 mt-1 mb-6">Enter your credentials to access your WEBUOS Brand workspace.</p>
+
+        <form onsubmit="handleAuthLogin(event)" class="space-y-4">
+          <div>
+            <label class="block text-sm font-semibold text-slate-800 mb-1.5">Work Email or Brand ID</label>
+            <input type="email" value="admin@acme-industries.com" required class="w-full h-12 px-4 bg-white border border-slate-200 rounded-xl text-sm" />
+          </div>
+          <div>
+            <div class="flex justify-between items-center mb-1.5">
+              <label class="block text-sm font-semibold text-slate-800">Password</label>
+              <a href="#" class="text-xs font-semibold text-sky-600 hover:underline">Forgot password?</a>
+            </div>
+            <input type="password" value="••••••••••••" required class="w-full h-12 px-4 bg-white border border-slate-200 rounded-xl text-sm" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-800 mb-1.5">Company / Workspace Code (Optional)</label>
+            <input type="text" placeholder="e.g. acme-brand" class="w-full h-12 px-4 bg-white border border-slate-200 rounded-xl text-sm" />
+          </div>
+
+          <div class="bg-sky-50 border border-sky-200 rounded-xl px-4 py-3 flex items-center gap-3">
+            <span class="text-blue-600 font-bold">ℹ</span>
+            <span class="text-xs sm:text-sm text-slate-700">Protected by WEBUOS enterprise Single Sign-On (SSO) &amp; multi-factor verification.</span>
+          </div>
+
+          <button type="submit" class="w-full h-12 bg-sky-600 hover:bg-sky-700 text-white rounded-full font-semibold text-sm sm:text-base flex items-center justify-center gap-2 shadow-md">
+            <span>Sign In to Brand Account &rarr;</span>
+          </button>
+        </form>
+
+        <div class="text-center mt-5 text-sm text-slate-500">
+          Don't have a business account? <button onclick="setAuthSubView('register')" class="text-sky-600 font-semibold hover:underline">Register organization &rarr;</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ======================================================== -->
+  <!-- VIEW 2: BRAND WORKSPACE WITH REQUESTED 6-SECTION SIDEBAR  -->
+  <!-- ======================================================== -->
+  <div id="viewWorkspace" class="flex-1 flex h-[calc(100vh-3.75rem)] overflow-hidden">
+    
+    <!-- SIDEBAR -->
+    <aside class="w-80 h-full flex flex-col bg-white border-r border-slate-200 text-slate-800 select-none flex-shrink-0">
+      
+      <!-- Top Search -->
+      <div class="p-4 pb-2">
+        <div class="relative flex items-center">
+          <span class="absolute left-3.5 text-slate-400">🔍</span>
+          <input
+            id="sidebarSearch"
+            type="text"
+            oninput="filterSidebar(this.value)"
+            placeholder="Search settings..."
+            class="w-full h-10 pl-9 pr-4 bg-slate-50 hover:bg-slate-100 text-sm text-slate-800 placeholder-slate-400 rounded-xl border border-slate-200 focus:outline-none focus:border-sky-500 transition"
+          />
+        </div>
+      </div>
+
+      <!-- Navigation List -->
+      <div id="sidebarList" class="flex-1 overflow-y-auto px-4 py-2 space-y-6 custom-scroll">
+        
+        <!-- 1. OVERVIEW & IDENTITY -->
+        <div class="sidebar-group space-y-1.5" data-group="1. OVERVIEW & IDENTITY">
+          <div class="px-2 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+            1. OVERVIEW &amp; IDENTITY
+          </div>
+          <div class="space-y-1">
+            <button onclick="selectNavItem(this, 'Overview', '1. OVERVIEW & IDENTITY')" class="nav-item active w-full flex items-center justify-between px-3 py-2.5 rounded-2xl bg-sky-50 border border-sky-300 text-sky-700 shadow-xs font-semibold text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-white text-sky-600 shadow-xs flex items-center justify-center font-bold">🏠</span>
+                <span class="text-[13.5px]">Overview</span>
+              </div>
+            </button>
+            <button onclick="selectNavItem(this, 'Personal Information', '1. OVERVIEW & IDENTITY')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">👤</span>
+                <span class="text-[13.5px]">Personal Information</span>
+              </div>
+            </button>
+            <button onclick="selectNavItem(this, 'Communication', '1. OVERVIEW & IDENTITY')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">✉️</span>
+                <span class="text-[13.5px]">Communication</span>
+              </div>
+              <span class="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">Verified</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. BRAND INFORMATION -->
+        <div class="sidebar-group space-y-1.5" data-group="2. BRAND INFORMATION">
+          <div class="px-2 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+            2. BRAND INFORMATION
+          </div>
+          <div class="space-y-1">
+            <button onclick="selectNavItem(this, 'Brand Profile', '2. BRAND INFORMATION')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">🏢</span>
+                <span class="text-[13.5px]">Brand Profile</span>
+              </div>
+              <span class="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">Active</span>
+            </button>
+            <button onclick="selectNavItem(this, 'Brand Identity', '2. BRAND INFORMATION')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">🎨</span>
+                <span class="text-[13.5px]">Brand Identity</span>
+              </div>
+            </button>
+            <button onclick="selectNavItem(this, 'Brand Description', '2. BRAND INFORMATION')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">📄</span>
+                <span class="text-[13.5px]">Brand Description</span>
+              </div>
+            </button>
+            <button onclick="selectNavItem(this, 'Brand History', '2. BRAND INFORMATION')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">⏳</span>
+                <span class="text-[13.5px]">Brand History</span>
+              </div>
+            </button>
+            <button onclick="selectNavItem(this, 'Brand Presence', '2. BRAND INFORMATION')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">🌐</span>
+                <span class="text-[13.5px]">Brand Presence</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. BUSINESS & CLASSIFICATION -->
+        <div class="sidebar-group space-y-1.5" data-group="3. BUSINESS & CLASSIFICATION">
+          <div class="px-2 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+            3. BUSINESS &amp; CLASSIFICATION
+          </div>
+          <div class="space-y-1">
+            <button onclick="selectNavItem(this, 'Company Information', '3. BUSINESS & CLASSIFICATION')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">💼</span>
+                <span class="text-[13.5px]">Company Information</span>
+              </div>
+            </button>
+            <button onclick="selectNavItem(this, 'Industry Hierarchy', '3. BUSINESS & CLASSIFICATION')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">🔀</span>
+                <span class="text-[13.5px]">Industry Hierarchy</span>
+              </div>
+            </button>
+            <button onclick="selectNavItem(this, 'Category Hierarchy', '3. BUSINESS & CLASSIFICATION')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">🗂️</span>
+                <span class="text-[13.5px]">Category Hierarchy</span>
+              </div>
+            </button>
+            <button onclick="selectNavItem(this, 'Business Activities', '3. BUSINESS & CLASSIFICATION')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">📈</span>
+                <span class="text-[13.5px]">Business Activities</span>
+              </div>
+            </button>
+            <button onclick="selectNavItem(this, 'Business Locations', '3. BUSINESS & CLASSIFICATION')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">📍</span>
+                <span class="text-[13.5px]">Business Locations</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4. OWNERSHIP & VERIFICATION -->
+        <div class="sidebar-group space-y-1.5" data-group="4. OWNERSHIP & VERIFICATION">
+          <div class="px-2 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+            4. OWNERSHIP &amp; VERIFICATION
+          </div>
+          <div class="space-y-1">
+            <button onclick="selectNavItem(this, 'Brand Ownership', '4. OWNERSHIP & VERIFICATION')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">🛡️</span>
+                <span class="text-[13.5px]">Brand Ownership</span>
+              </div>
+              <span class="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">Verified</span>
+            </button>
+            <button onclick="selectNavItem(this, 'Trademark Information', '4. OWNERSHIP & VERIFICATION')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">🎖️</span>
+                <span class="text-[13.5px]">Trademark Information</span>
+              </div>
+            </button>
+            <button onclick="selectNavItem(this, 'Legal & Tax Information', '4. OWNERSHIP & VERIFICATION')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">📑</span>
+                <span class="text-[13.5px]">Legal &amp; Tax Info</span>
+              </div>
+              <span class="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">Verified</span>
+            </button>
+            <button onclick="selectNavItem(this, 'Legal Documents', '4. OWNERSHIP & VERIFICATION')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">📁</span>
+                <span class="text-[13.5px]">Legal Documents</span>
+              </div>
+              <span class="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-sky-100 text-sky-800 border border-sky-200">5 Docs</span>
+            </button>
+            <button onclick="selectNavItem(this, 'Brand Verification', '4. OWNERSHIP & VERIFICATION')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">✅</span>
+                <span class="text-[13.5px]">Brand Verification</span>
+              </div>
+              <span class="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-sky-100 text-sky-800 border border-sky-200">Certified</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 5. BUSINESS NETWORK -->
+        <div class="sidebar-group space-y-1.5" data-group="5. BUSINESS NETWORK">
+          <div class="px-2 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+            5. BUSINESS NETWORK
+          </div>
+          <div class="space-y-1">
+            <button onclick="selectNavItem(this, 'Parent Company', '5. BUSINESS NETWORK')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">🏛️</span>
+                <span class="text-[13.5px]">Parent Company</span>
+              </div>
+            </button>
+            <button onclick="selectNavItem(this, 'Associated Companies', '5. BUSINESS NETWORK')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">🔗</span>
+                <span class="text-[13.5px]">Associated Companies</span>
+              </div>
+            </button>
+            <button onclick="selectNavItem(this, 'Authorized Representatives', '5. BUSINESS NETWORK')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">🤝</span>
+                <span class="text-[13.5px]">Authorized Representatives</span>
+              </div>
+            </button>
+            <button onclick="selectNavItem(this, 'Business Partnerships', '5. BUSINESS NETWORK')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">🌐</span>
+                <span class="text-[13.5px]">Business Partnerships</span>
+              </div>
+            </button>
+            <button onclick="selectNavItem(this, 'Authorized Distributors', '5. BUSINESS NETWORK')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">🚚</span>
+                <span class="text-[13.5px]">Authorized Distributors</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- 6. ACCOUNT SETTINGS -->
+        <div class="sidebar-group space-y-1.5" data-group="6. ACCOUNT SETTINGS">
+          <div class="px-2 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+            6. ACCOUNT SETTINGS
+          </div>
+          <div class="space-y-1">
+            <button onclick="selectNavItem(this, 'Team Management', '6. ACCOUNT SETTINGS')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">👥</span>
+                <span class="text-[13.5px]">Team Management</span>
+              </div>
+              <span class="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600">6 Members</span>
+            </button>
+            <button onclick="selectNavItem(this, 'Notifications', '6. ACCOUNT SETTINGS')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">🔔</span>
+                <span class="text-[13.5px]">Notifications</span>
+              </div>
+              <span class="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-rose-50 text-rose-600 border border-rose-200">3 New</span>
+            </button>
+            <button onclick="selectNavItem(this, 'Privacy Settings', '6. ACCOUNT SETTINGS')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">🔒</span>
+                <span class="text-[13.5px]">Privacy Settings</span>
+              </div>
+            </button>
+            <button onclick="selectNavItem(this, 'Account Settings', '6. ACCOUNT SETTINGS')" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center">⚙️</span>
+                <span class="text-[13.5px]">Account Settings</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Pinned Controls -->
+      <div class="p-4 pt-2 border-t border-slate-100 space-y-3 bg-white">
+        <!-- Appearance Pill Box -->
+        <div class="flex items-center justify-between p-2.5 px-3.5 bg-slate-50 border border-slate-200 rounded-2xl">
+          <span class="text-xs font-semibold text-slate-700">Appearance</span>
+          <div class="flex items-center bg-white border border-slate-200 p-0.5 rounded-full">
+            <button onclick="setTheme('light')" class="w-7 h-7 rounded-full flex items-center justify-center text-slate-400 hover:text-slate-800 text-xs font-bold">☀️</button>
+            <button onclick="setTheme('dark')" class="w-7 h-7 rounded-full flex items-center justify-center text-slate-400 hover:text-slate-800 text-xs font-bold">🌙</button>
+            <button onclick="setTheme('system')" class="w-7 h-7 rounded-full flex items-center justify-center bg-sky-100 text-sky-700 text-xs font-bold">💻</button>
+          </div>
+        </div>
+
+        <!-- Color Accent Chooser -->
+        <div class="flex items-center justify-between px-1 text-[11px] text-slate-500 font-medium">
+          <span>Active Color</span>
+          <div class="flex items-center gap-1.5">
+            <button onclick="setColor('brand-blue')" title="Brand Royal Blue" class="w-4 h-4 rounded-full bg-sky-600 ring-2 ring-offset-1 ring-sky-600"></button>
+            <button onclick="setColor('reference-cyan')" title="Reference Cyan" class="w-4 h-4 rounded-full bg-[#00acc1]"></button>
+            <button onclick="setColor('indigo')" title="Indigo" class="w-4 h-4 rounded-full bg-indigo-600"></button>
+            <button onclick="setColor('emerald')" title="Emerald" class="w-4 h-4 rounded-full bg-emerald-600"></button>
+          </div>
+        </div>
+
+        <!-- Back to WEBUOS -->
+        <button onclick="setAppMode('login')" class="w-full flex items-center gap-2.5 px-3 py-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 rounded-xl transition text-xs font-semibold">
+          <span>🚪</span>
+          <span>Back to WEBUOS</span>
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- RIGHT CONTENT AREA -->
+    <main class="flex-1 overflow-y-auto p-6 sm:p-8 bg-slate-50 custom-scroll">
+      <div class="max-w-4xl mx-auto space-y-6">
+        
+        <!-- Breadcrumb & Title -->
+        <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+          <div>
+            <div id="contentSectionTag" class="text-xs font-bold text-sky-600 uppercase tracking-wider mb-1">
+              1. OVERVIEW &amp; IDENTITY
+            </div>
+            <h2 id="contentHeading" class="text-2xl font-bold text-slate-900">
+              Overview
+            </h2>
+          </div>
+          <span class="text-xs font-bold px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-lg">
+            Certified Organization
+          </span>
+        </div>
+
+        <!-- Dynamic Content Card -->
+        <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xs space-y-6">
+          <div class="bg-gradient-to-r from-sky-600 to-sky-500 text-white p-6 rounded-2xl">
+            <h3 class="text-xl font-bold">Acme Industries Corporate Workspace</h3>
+            <p class="text-sky-100 text-xs sm:text-sm mt-1">
+              All 6 organization modules are synchronized with WEBUOS global registry.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl">
+              <div class="text-xs text-slate-400 font-bold uppercase">Entity Status</div>
+              <div class="text-xl font-bold text-slate-900 mt-1">Verified Tier 2</div>
+              <div class="text-xs text-emerald-600 mt-1">● Active Registration</div>
+            </div>
+            <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl">
+              <div class="text-xs text-slate-400 font-bold uppercase">Legal Records</div>
+              <div class="text-xl font-bold text-slate-900 mt-1">5 Documents</div>
+              <div class="text-xs text-sky-600 mt-1">● Audit Passed</div>
+            </div>
+            <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl">
+              <div class="text-xs text-slate-400 font-bold uppercase">Network</div>
+              <div class="text-xl font-bold text-slate-900 mt-1">14 Partners</div>
+              <div class="text-xs text-indigo-600 mt-1">● 6 Distributors</div>
+            </div>
+          </div>
+
+          <div class="p-4 bg-sky-50 border border-sky-100 rounded-2xl text-xs sm:text-sm text-sky-900 flex items-start gap-3">
+            <span>💡</span>
+            <div>
+              <span class="font-bold">Module Synced:</span> You are viewing the live configuration for <strong id="activeItemNotice">Overview</strong>. All changes are protected by enterprise Single Sign-On and multi-party cryptographic authorization.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    let currentThemeColor = 'brand-blue';
+
+    function setAppMode(mode) {
+      const vAuth = document.getElementById('viewAuth');
+      const vWs = document.getElementById('viewWorkspace');
+      const bReg = document.getElementById('btnTabReg');
+      const bLog = document.getElementById('btnTabLogin');
+      const bWs = document.getElementById('btnTabWorkspace');
+
+      [bReg, bLog, bWs].forEach(b => {
+        b.className = 'px-3.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition';
+      });
+
+      if (mode === 'workspace') {
+        vAuth.classList.add('hidden');
+        vWs.classList.remove('hidden');
+        bWs.className = 'px-3.5 py-1.5 rounded-lg bg-sky-600 text-white shadow-xs transition flex items-center gap-1.5';
+      } else {
+        vWs.classList.add('hidden');
+        vAuth.classList.remove('hidden');
+        if (mode === 'register') {
+          setAuthSubView('register');
+          bReg.className = 'px-3.5 py-1.5 rounded-lg bg-white text-slate-900 shadow-xs transition';
+        } else {
+          setAuthSubView('login');
+          bLog.className = 'px-3.5 py-1.5 rounded-lg bg-white text-slate-900 shadow-xs transition';
+        }
+      }
+    }
+
+    function setAuthSubView(sub) {
+      const cReg = document.getElementById('cardRegister');
+      const cLog = document.getElementById('cardLogin');
+      if (sub === 'register') {
+        cReg.classList.remove('hidden');
+        cLog.classList.add('hidden');
+      } else {
+        cReg.classList.add('hidden');
+        cLog.classList.remove('hidden');
+      }
+    }
+
+    function handleAuthLogin(e) {
+      e.preventDefault();
+      setAppMode('workspace');
+    }
+
+    function handleAuthRegister(e) {
+      e.preventDefault();
+      alert('Business account registered! Switching to Brand Login.');
+      setAuthSubView('login');
+    }
+
+    function selectNavItem(btn, label, section) {
+      document.querySelectorAll('.nav-item').forEach(el => {
+        el.className = 'nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-50 font-medium text-left transition';
+        const iconSpan = el.querySelector('span');
+        if (iconSpan) iconSpan.className = 'w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center';
+      });
+
+      applyActiveStyle(btn);
+
+      document.getElementById('contentHeading').innerText = label;
+      document.getElementById('contentSectionTag').innerText = section;
+      document.getElementById('activeItemNotice').innerText = label;
+    }
+
+    function applyActiveStyle(btn) {
+      if (currentThemeColor === 'reference-cyan') {
+        btn.className = 'nav-item active w-full flex items-center justify-between px-3 py-2.5 rounded-2xl bg-[#e0f7fa] border border-[#80deea] text-[#00838f] shadow-xs font-semibold text-left transition';
+        const icon = btn.querySelector('span');
+        if (icon) icon.className = 'w-8 h-8 rounded-xl bg-white text-[#00838f] shadow-xs flex items-center justify-center font-bold';
+      } else if (currentThemeColor === 'indigo') {
+        btn.className = 'nav-item active w-full flex items-center justify-between px-3 py-2.5 rounded-2xl bg-indigo-50 border border-indigo-200 text-indigo-700 shadow-xs font-semibold text-left transition';
+        const icon = btn.querySelector('span');
+        if (icon) icon.className = 'w-8 h-8 rounded-xl bg-white text-indigo-600 shadow-xs flex items-center justify-center font-bold';
+      } else if (currentThemeColor === 'emerald') {
+        btn.className = 'nav-item active w-full flex items-center justify-between px-3 py-2.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 shadow-xs font-semibold text-left transition';
+        const icon = btn.querySelector('span');
+        if (icon) icon.className = 'w-8 h-8 rounded-xl bg-white text-emerald-600 shadow-xs flex items-center justify-center font-bold';
+      } else {
+        btn.className = 'nav-item active w-full flex items-center justify-between px-3 py-2.5 rounded-2xl bg-sky-50 border border-sky-300 text-sky-700 shadow-xs font-semibold text-left transition';
+        const icon = btn.querySelector('span');
+        if (icon) icon.className = 'w-8 h-8 rounded-xl bg-white text-sky-600 shadow-xs flex items-center justify-center font-bold';
+      }
+    }
+
+    function setColor(color) {
+      currentThemeColor = color;
+      const activeBtn = document.querySelector('.nav-item.active');
+      if (activeBtn) applyActiveStyle(activeBtn);
+    }
+
+    function setTheme(mode) {
+      alert(`Appearance set to ${mode}`);
+    }
+
+    function filterSidebar(query) {
+      const q = query.toLowerCase().trim();
+      const groups = document.querySelectorAll('.sidebar-group');
+      groups.forEach(g => {
+        let hasVisible = false;
+        const items = g.querySelectorAll('.nav-item');
+        items.forEach(item => {
+          const match = item.innerText.toLowerCase().includes(q);
+          item.style.display = match ? 'flex' : 'none';
+          if (match) hasVisible = true;
+        });
+        g.style.display = hasVisible ? 'block' : 'none';
+      });
+    }
+
+    // Default to workspace mode
+    setAppMode('workspace');
+  </script>
+</body>
+</html>
