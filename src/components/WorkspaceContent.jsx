@@ -22,6 +22,7 @@ import CommunicationContent from './CommunicationContent';
 import BrandProfileContent from './BrandProfileContent';
 import BrandIdentityContent from './BrandIdentityContent';
 import BrandDescriptionContent from './BrandDescriptionContent';
+import BrandHistoryContent from './BrandHistoryContent';
 
 export default function WorkspaceContent({ activeItemId = 'overview', activeSectionTitle = '1. OVERVIEW & IDENTITY' }) {
   // 1. Overview Page
@@ -164,6 +165,11 @@ export default function WorkspaceContent({ activeItemId = 'overview', activeSect
   // 6. Brand Description Page
   if (activeItemId === 'brand-description') {
     return <BrandDescriptionContent />;
+  }
+
+  // 7. Brand History Page
+  if (activeItemId === 'brand-history') {
+    return <BrandHistoryContent />;
   }
 
   // Generic fallback rendering for all other 24 items
