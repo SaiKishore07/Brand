@@ -275,3 +275,4 @@ export default function TeamManagementContent() {
     </div>
   );
 }
+
