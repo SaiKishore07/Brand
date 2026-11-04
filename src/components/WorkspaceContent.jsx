@@ -25,6 +25,33 @@ import BrandDescriptionContent from './BrandDescriptionContent';
 import BrandHistoryContent from './BrandHistoryContent';
 import BrandPresenceContent from './BrandPresenceContent';
 
+// Section 3: Business & Classification
+import CompanyInfoContent from './CompanyInfoContent';
+import IndustryHierarchyContent from './IndustryHierarchyContent';
+import CategoryHierarchyContent from './CategoryHierarchyContent';
+import BusinessActivitiesContent from './BusinessActivitiesContent';
+import BusinessLocationsContent from './BusinessLocationsContent';
+
+// Section 4: Ownership & Verification
+import BrandOwnershipContent from './BrandOwnershipContent';
+import TrademarkInfoContent from './TrademarkInfoContent';
+import LegalTaxInfoContent from './LegalTaxInfoContent';
+import LegalDocumentsContent from './LegalDocumentsContent';
+import BrandVerificationContent from './BrandVerificationContent';
+
+// Section 5: Business Network
+import ParentCompanyContent from './ParentCompanyContent';
+import AssociatedCompaniesContent from './AssociatedCompaniesContent';
+import AuthorizedRepresentativesContent from './AuthorizedRepresentativesContent';
+import BusinessPartnershipsContent from './BusinessPartnershipsContent';
+import AuthorizedDistributorsContent from './AuthorizedDistributorsContent';
+
+// Section 6: Account Settings
+import TeamManagementContent from './TeamManagementContent';
+import NotificationsContent from './NotificationsContent';
+import PrivacySettingsContent from './PrivacySettingsContent';
+import AccountSettingsContent from './AccountSettingsContent';
+
 export default function WorkspaceContent({ activeItemId = 'overview', activeSectionTitle = '1. OVERVIEW & IDENTITY' }) {
   // 1. Overview Page
   if (activeItemId === 'overview') {
@@ -176,6 +203,71 @@ export default function WorkspaceContent({ activeItemId = 'overview', activeSect
   // 8. Brand Presence Page
   if (activeItemId === 'brand-presence') {
     return <BrandPresenceContent />;
+  }
+
+  // Section 3: Business & Classification
+  if (activeItemId === 'company-info' || activeItemId === 'company-information') {
+    return <CompanyInfoContent />;
+  }
+  if (activeItemId === 'industry-hierarchy') {
+    return <IndustryHierarchyContent />;
+  }
+  if (activeItemId === 'category-hierarchy') {
+    return <CategoryHierarchyContent />;
+  }
+  if (activeItemId === 'business-activities') {
+    return <BusinessActivitiesContent />;
+  }
+  if (activeItemId === 'business-locations') {
+    return <BusinessLocationsContent />;
+  }
+
+  // Section 4: Ownership & Verification
+  if (activeItemId === 'brand-ownership') {
+    return <BrandOwnershipContent />;
+  }
+  if (activeItemId === 'trademark-info' || activeItemId === 'trademark-information') {
+    return <TrademarkInfoContent />;
+  }
+  if (activeItemId === 'legal-tax-info' || activeItemId === 'legal-tax-information') {
+    return <LegalTaxInfoContent />;
+  }
+  if (activeItemId === 'legal-documents') {
+    return <LegalDocumentsContent />;
+  }
+  if (activeItemId === 'brand-verification') {
+    return <BrandVerificationContent />;
+  }
+
+  // Section 5: Business Network
+  if (activeItemId === 'parent-company') {
+    return <ParentCompanyContent />;
+  }
+  if (activeItemId === 'associated-companies') {
+    return <AssociatedCompaniesContent />;
+  }
+  if (activeItemId === 'authorized-representatives') {
+    return <AuthorizedRepresentativesContent />;
+  }
+  if (activeItemId === 'business-partnerships') {
+    return <BusinessPartnershipsContent />;
+  }
+  if (activeItemId === 'authorized-distributors') {
+    return <AuthorizedDistributorsContent />;
+  }
+
+  // Section 6: Account Settings
+  if (activeItemId === 'team-management') {
+    return <TeamManagementContent />;
+  }
+  if (activeItemId === 'notifications') {
+    return <NotificationsContent />;
+  }
+  if (activeItemId === 'privacy-settings') {
+    return <PrivacySettingsContent />;
+  }
+  if (activeItemId === 'account-settings') {
+    return <AccountSettingsContent />;
   }
 
   // Generic fallback rendering for all other 24 items

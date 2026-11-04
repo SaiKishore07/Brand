@@ -91,11 +91,10 @@ export default function CommunicationContent() {
           </span>
           <button
             onClick={handleSave}
-            className={`px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm shadow-xs flex items-center gap-2 transition duration-200 ${
-              isSaved
+            className={`px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm shadow-xs flex items-center gap-2 transition duration-200 ${isSaved
                 ? 'bg-emerald-600 text-white'
                 : 'bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-white'
-            }`}
+              }`}
           >
             {isSaved ? (
               <>
